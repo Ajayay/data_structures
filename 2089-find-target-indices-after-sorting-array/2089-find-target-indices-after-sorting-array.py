@@ -1,4 +1,5 @@
 class Solution:
+#     self done
     def targetIndices(self, nums: List[int], target: int) -> List[int]:
         if len(nums) == 1 and nums[0] == target:
             return [0]
