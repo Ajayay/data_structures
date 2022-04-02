@@ -1,10 +1,14 @@
+from typing import List
+
+
 class Solution:
     def longestWord(self, words: List[str]) -> str:
         words = sorted(words)
+        print(words)
         longest_word = 0
         ans = ''
         trie = {}
-        
+
         for word in words:
             cur_prefixes_length = 0
             cur_node = trie
@@ -13,12 +17,17 @@ class Solution:
                 letter = word[i]
                 if letter in cur_node:
                     cur_prefixes_length += 1
-                    applicable = applicable and 'end' in cur_node[letter]
+                    if 'end' in cur_node[letter]:
+                        applicable = True
+                    else:
+                        applicable = False
                 else:
                     cur_node[letter] = {}
-                    applicable = applicable and i == len(word) - 1
+                    if i == len(word) - 1:
+                        applicable = True
+                    else:
+                        applicable =False
                     cur_prefixes_length += 1
-
                 if not applicable:
                     break
 
@@ -30,3 +39,4 @@ class Solution:
                 ans = word
 
         return ans
+
