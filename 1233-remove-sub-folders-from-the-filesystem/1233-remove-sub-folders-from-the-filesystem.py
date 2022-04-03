@@ -1,6 +1,7 @@
 class Solution:
     def removeSubfolders(self, folder: List[str]) -> List[str]:
         folder.sort(key=lambda f: len(f))
+        print(folder)
         seen = set()
         for f in folder:
             for i in range(2, len(f)):
