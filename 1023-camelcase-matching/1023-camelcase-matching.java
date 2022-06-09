@@ -19,6 +19,10 @@ class Solution {
             } else if (queryArr[i] >= 'A' && queryArr[i] <= 'Z') {
                 return false;
             }
+            
+            if (j>patternArr.length){
+                break;
+            }
         }
         
         return j == patternArr.length;
