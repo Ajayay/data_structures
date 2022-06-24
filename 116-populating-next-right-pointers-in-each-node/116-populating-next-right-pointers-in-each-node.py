@@ -9,46 +9,18 @@ class Node:
 """
 
 class Solution:
-    import collections 
-
-class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         
-        if not root:
+        if root is not None:
+            lmost = root
+            while lmost.left is not None:
+                head = lmost
+                while head != None:
+                    head.left.next = head.right
+                    if head.next:
+                        head.right.next = head.next.left
+                    head = head.next
+                    
+                lmost = lmost.left
+        
             return root
-        
-        # Initialize a queue data structure which contains
-        # just the root of the tree
-        Q = collections.deque([root])
-        
-        # Outer while loop which iterates over 
-        # each level
-        while Q:
-            
-            # Note the size of the queue
-            size = len(Q)
-            
-            # Iterate over all the nodes on the current level
-            for i in range(size):
-                
-                # Pop a node from the front of the queue
-                node = Q.popleft()
-                
-                # This check is important. We don't want to
-                # establish any wrong connections. The queue will
-                # contain nodes from 2 levels at most at any
-                # point in time. This check ensures we only 
-                # don't establish next pointers beyond the end
-                # of a level
-                if i < size - 1:
-                    node.next = Q[0]
-                
-                # Add the children, if any, to the back of
-                # the queue
-                if node.left:
-                    Q.append(node.left)
-                if node.right:
-                    Q.append(node.right)
-        
-        # Since the tree has now been modified, return the root node
-        return root
