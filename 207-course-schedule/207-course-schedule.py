@@ -11,7 +11,7 @@ class Solution:
                 vis[i] = '0'
         # print(vis)
         cycle = False
-        stack = []
+        # stack = []
         
         def dfs(vertex,vis):
             nonlocal cycle
@@ -21,13 +21,13 @@ class Solution:
             
             vis[vertex] = '1'
             for i in adj_lst[vertex]:
-                print(i)
+                # print(i)
                 if vis[i] == '0':
                     dfs(i,vis)
                 elif vis[i] == '1':
                     cycle = True
             vis[vertex] = '2'
-            stack.append(vertex)
+            # stack.append(vertex)
                 
         
         
