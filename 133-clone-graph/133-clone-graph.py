@@ -7,23 +7,22 @@ class Node:
 """
 
 class Solution:
-    
-    def __init__(self):
-        self.vis = {}
-    
     def cloneGraph(self, node: 'Node') -> 'Node':
         if node is None:
             return node
-        
-        if node in self.vis:
-            return self.vis[node]
         else:
-            cloned_node = Node(node.val,[])
-            self.vis[node] = cloned_node
-            if node.neighbors:
-                for j in node.neighbors:
-                    cloned_node.neighbors.append(self.cloneGraph(j))
-                    
-        return cloned_node
-        
-        
+            # storing {og_node : cloned_node}
+            vis = {}
+            vis[node] = Node(node.val,[])
+            # storing og_nodes in q
+            q = []
+            q.append(node)
+            while q:
+                n = q.pop(0)
+                for i in n.neighbors:
+                    if i not in vis:
+                        vis[i] = Node(i.val,[])
+                        q.append(i)
+                    # get cloned_node from vis in its neighbor add the new cloned neighbor node
+                    vis[n].neighbors.append(vis[i])
+            return vis[node]
