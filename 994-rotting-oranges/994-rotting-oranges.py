@@ -1,3 +1,4 @@
+
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         if not grid:
@@ -17,9 +18,10 @@ class Solution:
         if count_fresh == 0:
             return 0
         count = 0
-        while q:
+        while len(q) and count_fresh>0:
             count+=1
-            for sz in range(len(q)):
+            size_q = len(q)
+            for sz in range(size_q):
                 rrow,rcol= q.pop(0)
                 for x,y in [(1,0),(0,1),(-1,0),(0,-1)]:
                     new_row , new_col = rrow+x , rcol+y
@@ -30,6 +32,8 @@ class Solution:
                             count_fresh-=1
             # count+=1
         if count_fresh == 0:
-            return count-1
+            return count
         else:
             return -1
+                
+                       
