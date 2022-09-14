@@ -19,7 +19,7 @@ class Solution:
             return 0
         count = 0
         while len(q)>0:
-            count+=1
+            # count+=1
             size_q = len(q)
             for sz in range(size_q):
                 rrow,rcol= q.pop(0)
@@ -30,7 +30,7 @@ class Solution:
                             grid[new_row][new_col] = 2
                             q.append((new_row,new_col))
                             count_fresh-=1
-            # count+=1
+            count+=1
         if count_fresh == 0:
             return count-1
         else:
