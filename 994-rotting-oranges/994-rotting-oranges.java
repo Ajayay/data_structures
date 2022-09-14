@@ -23,8 +23,7 @@ class Solution {
         int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
         //bfs starting from initially rotten oranges
         while(!queue.isEmpty()) {
-            count++;
-            System.out.println(count);
+            // ++count;
             int size = queue.size();
             for(int i = 0 ; i < size ; i++) {
                 int[] point = queue.poll();
@@ -44,6 +43,7 @@ class Solution {
                     count_fresh--;
                 }
             }
+            count++;
         }
         return count_fresh == 0 ? count-1 : -1;
     }
