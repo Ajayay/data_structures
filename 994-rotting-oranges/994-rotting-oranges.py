@@ -18,7 +18,7 @@ class Solution:
         if count_fresh == 0:
             return 0
         count = 0
-        while len(q) and count_fresh>0:
+        while len(q)>0:
             count+=1
             size_q = len(q)
             for sz in range(size_q):
@@ -32,7 +32,7 @@ class Solution:
                             count_fresh-=1
             # count+=1
         if count_fresh == 0:
-            return count
+            return count-1
         else:
             return -1
                 
