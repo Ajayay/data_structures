@@ -1,12 +1,18 @@
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        # Initialize our variables using the first element.
-        current_subarray = max_subarray = nums[0]
-        
-        # Start with the 2nd element since we already used the first one.
-        for num in nums[1:]:
-            # If current_subarray is negative, throw it away. Otherwise, keep adding to it.
-            current_subarray = max(num, current_subarray + num)
-            max_subarray = max(max_subarray, current_subarray)
-        
-        return max_subarray
+        if len(nums) == 0:
+            return nums
+        elif len(nums) == 1:
+            return nums[0]
+        else:
+            max_sum = -inf
+            sum_val = 0
+            for i in nums:
+                sum_val+=i
+                if sum_val > max_sum:
+                    max_sum = sum_val
+
+                if sum_val < 0:
+                    sum_val = 0
+
+            return max_sum
