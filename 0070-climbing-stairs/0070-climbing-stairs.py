@@ -2,10 +2,14 @@ class Solution:
     def climbStairs(self, n: int) -> int:
         if n <= 3:
             return n
-        n1, n2 = 2, 3
-
-        for i in range(4, n + 1):
-            temp = n1 + n2
-            n1 = n2
-            n2 = temp
-        return n2
+        
+        first = 1
+        second = 1
+        
+        for i in range(n-2, -1,-1):
+            temp = first
+            first = first+second
+            second = temp
+            
+        return first
+    
